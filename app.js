@@ -9,7 +9,10 @@ const path = require("path");
 // Connect to MongoDB
 mongoose
   .connect(
-    "mongodb+srv://restfull:restfull123@restfulllearing.c2tsl.mongodb.net/RestFullLearing?retryWrites=true&w=majority"
+    "mongodb+srv://restfull:restfull123@restfulllearing.c2tsl.mongodb.net/RestFullLearing?retryWrites=true&w=majority",{
+ useNewUrlParser: true,
+    useUnifiedTopology: true
+    }
   )
   .then(() => console.log(" MongoDB Connected"))
   .catch((err) => console.log(" MongoDB Connection Failed:", err));
