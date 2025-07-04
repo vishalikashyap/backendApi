@@ -78,6 +78,11 @@ app.use('/api/checkout', checkoutRoutes);
 app.use('/api/v1/paypal', paymentRoutes);
 app.use("/api/users", userRoutes);
 
+// Default root route
+app.get("/", (req, res) => {
+  res.send("Backend API is working ✅");
+});
+
 // 404 Fallback
 app.use((req, res, next) => {
   res.status(404).json({ error: "Bad Request - Route Not Found" });
