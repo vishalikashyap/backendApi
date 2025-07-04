@@ -10,15 +10,15 @@ const path = require("path");
 mongoose
   .connect(
     "mongodb+srv://restfull:restfull123@restfulllearing.c2tsl.mongodb.net/RestFullLearing?retryWrites=true&w=majority",{
- useNewUrlParser: true,
-    useUnifiedTopology: true
+     useNewUrlParser: true,
+     useUnifiedTopology: true,
     }
   )
   .then(() => console.log(" MongoDB Connected"))
   .catch((err) => console.log(" MongoDB Connection Failed:", err));
 
 // Allow Multiple Origins
-const allowedOrigins = ["http://localhost:4200", "http://localhost:52209","https://sending-love.vercel.app"];
+const allowedOrigins = ["http://localhost:4200", "http://localhost:62249","https://sending-love.vercel.app"];
 
 app.use(
   cors({
