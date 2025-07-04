@@ -15,7 +15,7 @@ mongoose
   .catch((err) => console.log(" MongoDB Connection Failed:", err));
 
 // Allow Multiple Origins
-const allowedOrigins = ["http://localhost:4200", "http://localhost:52209"];
+const allowedOrigins = ["http://localhost:4200", "http://localhost:52209","https://sending-love.vercel.app"];
 
 app.use(
   cors({
