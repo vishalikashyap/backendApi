@@ -2,26 +2,27 @@ const Product = require("../model/product");
 
 exports.createProduct = async (req, res) => {
   try {
-    const { name, email, price, phone, category } = req.body;
+    const { name, email, price, phone, category, description, shortDescription, discount } = req.body;
 
     if (!name || !email || !price || !phone || !category || !req.files || req.files.length === 0) {
       return res.status(400).json({
         success: false,
-        message: "All fields including category and at least one image are required!",
+        message: "All fields including images are required!",
       });
     }
 
-    // Extract image paths
     const imagePaths = req.files.map((file) => `/uploads/${file.filename}`);
 
-    // Create new product document
     const product = new Product({
       name,
       email,
       price,
       phone,
-      category, // <-- include this
+      category,
       images: imagePaths,
+      description,
+      shortDescription,
+      discount: discount || 0,
     });
 
     await product.save();
@@ -36,7 +37,7 @@ exports.createProduct = async (req, res) => {
   }
 };
 
-// Get All Products (with optional category filtering)
+// Get Products (optional filtering by category or search)
 exports.getProducts = async (req, res) => {
   try {
     const { category } = req.query;
@@ -52,4 +53,3 @@ exports.getProducts = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
-
