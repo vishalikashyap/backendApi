@@ -18,7 +18,7 @@ mongoose
   .catch((err) => console.log(" MongoDB Connection Failed:", err));
 
 // Allow Multiple Origins
-const allowedOrigins = ["http://localhost:4200", "http://localhost:59953","https://sending-love.vercel.app","https://angular19-project-blond.vercel.app"];
+const allowedOrigins = ["http://localhost:4200", "http://localhost:53037","https://sending-love.vercel.app","https://angular19-project-blond.vercel.app"];
 
 app.use(
   cors({
@@ -69,6 +69,8 @@ const checkoutRoutes = require('./app/routes/checkout');
 const paymentRoutes = require('./app/routes/payment');
 const userRoutes = require("./app/routes/authRoutes");
 const sAuthRoutes = require("./app/routes/sAuthRoutes");
+const wishlistRoutes = require("./app/routes/wishlistRoutes");
+const otpRoutes = require("./app/routes/otp.route");
 
 // new create product code
 const NewproductRoutes = require('./app/routes/product-rotes');
@@ -83,6 +85,9 @@ app.use("/api/cart", cartRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use('/api/v1/paypal', paymentRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/wishlist", wishlistRoutes);
+app.use("/api/otp", otpRoutes);
+// app.use('/public', express.static('public'));
 
 app.use('/api/new', NewproductRoutes);
 
